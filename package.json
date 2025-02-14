@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.17",
+    "hardhat-deploy": "^0.12.4",
+    "hardhat-deploy-ethers": "^0.4.2"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.0.8",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "ethers": "^6.13.5",
+    "jazzicon": "^2.0.0"
+  }
+}
