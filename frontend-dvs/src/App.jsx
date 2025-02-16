@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Votepage from "./components/Homepage/VoterPage";
 import VoterLogin from "./components/Login/Voterlogin";
 import CandidateLogin from "./components/Login/CandidateLogin";
 import DetailedPage from "./candidatePage/DetailsPage";
+import CandidatePage from "./candidatePage/CandidatePage";
 
 function App() {
   return (
@@ -13,8 +13,9 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/VoterLogin" element={<VoterLogin />} />
         <Route path="/CandidateLogin" element={<CandidateLogin />} />
-        <Route path="/Votepage" element={<Votepage/>}/>
-        <Route path="/DetailedPage" element={<DetailedPage/>}/>
+        <Route path="/Votepage" element={<Votepage />} />
+        <Route path="/DetailedPage" element={<DetailedPage />} />
+        <Route path="/CandidatePage/:id" element={<CandidatePage />} />  {/* Dynamic Route */}
       </Routes>
     </BrowserRouter>
   );

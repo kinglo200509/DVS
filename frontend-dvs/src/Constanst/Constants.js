@@ -1,35 +1,18 @@
 
-export const contractAddress = '0x115E511F00b75B5413bC5b331AdC56F3c6Da2a0e';
+export const contractAddress = '0xAf66f04538b255483E274C86e6BcAef159307Daa';
 
 
 export const ABI =  [
   {
-    "inputs": [],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
     "inputs": [
       {
-        "internalType": "string",
-        "name": "name_",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "id_",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "vote_",
-        "type": "uint256"
+        "internalType": "string[]",
+        "name": "candidateNames",
+        "type": "string[]"
       }
     ],
-    "name": "addCandidates",
-    "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "constructor"
   },
   {
     "inputs": [
@@ -48,11 +31,6 @@ export const ABI =  [
       },
       {
         "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
         "name": "votes",
         "type": "uint256"
       }
@@ -64,30 +42,11 @@ export const ABI =  [
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "arrayId_",
+        "name": "candidateId",
         "type": "uint256"
       }
     ],
-    "name": "displayCandidates",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "candidateName",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "arrayId_",
-        "type": "uint256"
-      }
-    ],
-    "name": "displayVotesOfCandidate",
+    "name": "getCandidateVotes",
     "outputs": [
       {
         "internalType": "uint256",
@@ -101,8 +60,27 @@ export const ABI =  [
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "hasVoted",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
-        "name": "arrayId_",
+        "name": "candidateId",
         "type": "uint256"
       }
     ],

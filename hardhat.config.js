@@ -1,17 +1,20 @@
 require("@nomicfoundation/hardhat-toolbox");
-require("hardhat-deploy")
-require("dotenv").config()
+require("dotenv").config();
 
-
-const privateKey = process.env.Holesky_PRIVATEKEY;
-
-/** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.28",
-  networks:{
-      holesky:{
-        url: "https://eth-holesky.g.alchemy.com/v2/Y5ubydss7pb6AmVDMptzIL90cIFA6R8j",
-        accounts:[privateKey]
-      }
-  }
+  solidity: {
+    version: "0.8.28",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200, // Optimize bytecode
+      },
+    },
+  },
+  networks: {
+    holesky: {
+      url: process.env.HOLESKY_RPC_URL, // Use an Alchemy or Infura RPC URL
+      accounts: [process.env.PRIVATE_KEY], // Your Ethereum private key
+    },
+  },
 };

@@ -18,7 +18,7 @@ export default function Maindisplay({ address = "Not Connected" }) {
       container.appendChild(el);
     }
   }, []);
-
+  
   // connecting the blockchain to frontend
   // provider
   const provider = new ethers.providers.Web3Provider(window.ethereum)

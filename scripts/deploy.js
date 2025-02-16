@@ -1,24 +1,26 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-  // creating an instance
-  const voting = await ethers.getContractFactory("voting");
+  // Define candidate names
+  const candidateNames = ["Alice", "Bob", "Charlie"];
 
-  // deploying
-  const voting_deploy = await voting.deploy();
+  // Get the contract factory
+  const Voting = await ethers.getContractFactory("Voting");
 
-  // waiting for the deployment
-  await voting_deploy.waitForDeployment()
+  // Deploy the contract with candidate names as an argument
+  const votingDeploy = await Voting.deploy(candidateNames);
 
-  const addressConract = await voting_deploy.getAddress()
-  console.log("contract address : ",addressConract);
+  // Wait for deployment
+  await votingDeploy.waitForDeployment();
+
+  const contractAddress = await votingDeploy.getAddress();
+  console.log("Contract deployed at:", contractAddress);
 }
 
 main()
-  .then(() => {
-    process.exit(0);
-  })
+  .then(() => process.exit(0))
   .catch((error) => {
-    console.log(error);
+    console.error(error);
     process.exit(1);
   });
+  

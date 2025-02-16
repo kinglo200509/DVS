@@ -1,47 +1,32 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.28;
-import "hardhat/console.sol";
 
-contract voting {
-    // creating a struct
-    struct  candidate {
+contract Voting {
+    struct Candidate {
         string name;
-        uint256 id;
         uint256 votes;
     }
-    // creating an array of candidates , getter function
-    candidate[] public candidates;
 
-    // owner
-    address owner;
+    Candidate[] public candidates;
+    mapping(address => bool) public hasVoted;
 
-    constructor(){
-        owner = msg.sender;
+    constructor(string[] memory candidateNames) {
+        for (uint256 i = 0; i < candidateNames.length; i++) {
+            candidates.push(Candidate({name: candidateNames[i], votes: 0}));
+        }
     }
 
-    // function -list of candidates
-    function addCandidates(string memory name_, uint256 id_ , uint256 vote_) public  {
-        candidates.push(candidate({name: name_, id: id_ , votes:vote_}));
-    }   
-    
-    // function for displaying the ecandidates
-    function displayCandidates(uint256 arrayId_) public view returns (string memory candidateName) {
-        require(arrayId_ < candidates.length, "The number requested is wrong");
-        candidateName = candidates[arrayId_].name;
-        return (candidateName);
+    function voteForCandidate(uint256 candidateId) public {
+
+    require(candidateId >= 0, "Invalid candidate ID"); // Ensures positive ID
+        require(!hasVoted[msg.sender], "You have already voted");
+
+        candidates[candidateId].votes += 1;
+        hasVoted[msg.sender] = true;
     }
 
-    // vote for the candidate
-    function voteForCandidate(uint256 arrayId_) public  {
-        require(arrayId_ < candidates.length, "This is cnadidate is not available");
-        candidates[arrayId_].votes +=1;
+    function getCandidateVotes(uint256 candidateId) public view returns (uint256) {
+        require(candidateId < candidates.length, "Invalid candidate ID");
+        return candidates[candidateId].votes;
     }
-
-    // display Votes
-    function displayVotesOfCandidate(uint256 arrayId_) public view returns(uint256){
-        return(candidates[arrayId_].votes);
-    }
-
-    // 
-    
 }
